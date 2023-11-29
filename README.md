@@ -13,7 +13,7 @@
 
 <p align="center">
 <a href="https://www.npmjs.com/package/@esmjs/geo" target="__blank"><img src="https://img.shields.io/npm/v/@esmjs/geo?color=a1b858&label=" alt="NPM version"></a>
-<a href="https://www.npmjs.com/package/@esmjs/geo" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@esmjs/geo?color=50a36f&label="></a>
+<a href="https://www.npmjs.com/package/@esmjs/geo" target="__blank"><img src="https://img.shields.io/npm/dm/@esmjs/geo?color=50a36f&label=" alt="NPM Downloads"></a>
 </p>
 
 ## 🚀 特性
@@ -44,6 +44,11 @@ pnpm add @esmjs/geo
 import { geoChina } from "@esmjs/geo";
 import * as echarts from "echarts/core";
 
+/**
+ * 由于 echarts 没有导出 geoJSON 的 GeoJSONSourceInput 类型
+ * geoChina 只能导出标准的 GeoJSON 格式类型
+ * 如果你的项目是 TypeScript 编写，下面代码加上 //@ts-expect-error 即可
+ */
 echarts.registerMap("china", { geoJSON: geoChina });
 ```
 
@@ -62,6 +67,7 @@ echarts.registerMap("china", { geoJSON: geoChina });
 - [`rust`相关学习资料](https://github.com/esmjs/geo/issues/1#issuecomment-1831374680)
 - [有么有类似`npmjs`的`rust`包管理器](https://github.com/esmjs/geo/issues/1#issuecomment-1831382508)
 - [`rust`安装环境麻烦，如何通过`docker`运行`rust`爬虫程序](https://github.com/esmjs/geo/issues/1#issuecomment-1831445627)
+- [地图数据来源哪？](https://github.com/esmjs/geo/issues/1#issuecomment-1831535156)
 
 ## 许可证
 
