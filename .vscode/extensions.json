@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "vscode-icons-team.vscode-icons",
+    "dustypomerleau.rust-syntax",
+    "rust-lang.rust-analyzer"
+  ]
+}

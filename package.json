@@ -1,0 +1,51 @@
+{
+  "name": "@esmjs/geo",
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@8.6.10",
+  "description": "中国地理信息（GeoJSON）",
+  "keywords": [
+    "@esmjs/geo",
+    "China GeoJSON",
+    "中国地理信息（GeoJSON）",
+    "GeoJSON"
+  ],
+  "homepage": "https://github.com/esmjs/geo/tree/main#readme",
+  "bugs": {
+    "url": "https://github.com/esmjs/geo/issues"
+  },
+  "license": "MIT",
+  "author": "@esmjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esmjs/geo.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/modules.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/modules.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rimraf dist && esno build && tsc",
+    "pub": "pub"
+  },
+  "devDependencies": {
+    "@pureadmin/release": "^1.0.0",
+    "@types/node": "^20.10.0",
+    "esbuild": "^0.19.8",
+    "esno": "^4.0.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.2"
+  }
+}
