@@ -12,8 +12,7 @@
 </p>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/@esmjs/geo" target="__blank"><img src="https://img.shields.io/npm/v/@esmjs/geo?color=a1b858&label=" alt="NPM version"></a>
-<a href="https://www.npmjs.com/package/@esmjs/geo" target="__blank"><img src="https://img.shields.io/npm/dm/@esmjs/geo?color=50a36f&label=" alt="NPM Downloads"></a>
+<a href="https://www.npmjs.com/package/@esmjs/geo" target="__blank"><img src="https://img.shields.io/npm/v/@esmjs/geo?color=67C23A&label=" alt="NPM version"></a>
 </p>
 
 ## 🚀 特性
