@@ -19,11 +19,11 @@ pub fn write_to_json_file(
     content: &str,
     pretty_print: bool,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    let file = File::create(filename)?;
+    let file: File = File::create(filename)?;
     let mut writer: std::io::BufWriter<_> = std::io::BufWriter::new(file);
 
-    let json_value = serde_json::from_str::<serde_json::Value>(content)?;
-    let json_string = if pretty_print {
+    let json_value: serde_json::Value = serde_json::from_str::<serde_json::Value>(content)?;
+    let json_string: String = if pretty_print {
         serde_json::to_string_pretty(&json_value)?
     } else {
         serde_json::to_string(&json_value)?
