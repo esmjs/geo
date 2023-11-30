@@ -2,6 +2,8 @@ use reqwest;
 use serde::{Deserialize, Serialize};
 use std::time::Duration;
 
+use super::print_fail;
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct ProvinceData {
     pub adcode: i32,
@@ -33,7 +35,7 @@ pub async fn send_http_request(
             return Err("超过最大重试次数".into());
         }
 
-        println!("请求失败，正在重试... (第 {}/{})", retries, max_retries);
+        println!("{}", print_fail(retries, max_retries));
 
         tokio::time::sleep(Duration::from_secs(1)).await; // 等待1秒后进行下一次请求
     }
