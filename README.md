@@ -80,12 +80,12 @@ echarts.registerMap("china", { geoJSON: china });
 
 - [为什么使用`rust`编写爬虫程序](https://github.com/esmjs/geo/issues/1#issue-2015833595)
 - [为什么使用`esbuild`打包而不是`rollup`](https://github.com/esmjs/geo/issues/1#issuecomment-1831371327)
-- [既然是纯`esm`包，为什么`package.json`文件还要加`main`、`module`、`types`配置呢](https://github.com/esmjs/geo/issues/1#issuecomment-1831373645)
+- [既然是纯`esm`包，为什么`package.json`文件还要加`main`、`module`、`types`配置](https://github.com/esmjs/geo/issues/1#issuecomment-1831373645)
 - [如何运行`rust`爬虫程序](https://github.com/esmjs/geo/issues/1#issuecomment-1831374543)
 - [`rust`相关学习资料](https://github.com/esmjs/geo/issues/1#issuecomment-1831374680)
 - [有么有类似`npmjs`的`rust`包管理器](https://github.com/esmjs/geo/issues/1#issuecomment-1831382508)
 - [`rust`安装环境麻烦，如何通过`docker`运行`rust`爬虫程序](https://github.com/esmjs/geo/issues/1#issuecomment-1831445627)
-- [地图数据来源哪](https://github.com/esmjs/geo/issues/1#issuecomment-1831535156)
+- [地图数据来源](https://github.com/esmjs/geo/issues/1#issuecomment-1831535156)
 
 ## 许可证
 
