@@ -1,7 +1,9 @@
 use serde_json;
 use std::fs;
 use std::fs::File;
+use std::io;
 use std::io::Write;
+use std::path::Path;
 
 pub fn read_previous_json_file(
     filename: &str,
@@ -38,4 +40,12 @@ pub fn is_json_content_same(file_content: &str, new_content: &str) -> bool {
     let new_json: serde_json::Value = serde_json::from_str(new_content).unwrap();
 
     file_json == new_json
+}
+
+pub fn create_folder_if_not_exists<P: AsRef<Path>>(path: P) -> io::Result<()> {
+    match fs::create_dir(path.as_ref()) {
+        Ok(()) => Ok(()),
+        Err(ref e) if e.kind() == io::ErrorKind::AlreadyExists => Ok(()),
+        err @ Err(_) => err,
+    }
 }
