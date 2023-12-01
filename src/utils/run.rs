@@ -1,4 +1,5 @@
 use path_abs::{PathAbs, PathInfo};
+use std::process;
 
 use super::{
     create_folder_if_not_exists, get_province, is_json_content_same, print_err, print_filename,
@@ -44,6 +45,7 @@ pub async fn start() -> Result<(), Box<dyn std::error::Error>> {
                     }
                     Err(err) => {
                         eprintln!("{}", print_out(&err));
+                        process::exit(1);
                     }
                 }
             }

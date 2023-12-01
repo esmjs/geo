@@ -20,7 +20,7 @@ pub fn print_fail(text: u32, max: u32) -> AnsiGenericString<'static, str> {
 
 pub fn print_out(url: &str) -> AnsiGenericString<'_, str> {
     let _text: String = format!(
-        "超过最大重试次数，请检查请求失败的URL是否有误：{}",
+        "超过最大重试次数，请检查请求失败的URL是否有误：{} \n程序已退出",
         Blue.underline().paint(url)
     );
     return LightYellow.paint(_text);
