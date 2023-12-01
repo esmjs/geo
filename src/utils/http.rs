@@ -14,17 +14,17 @@ pub async fn send_http_request(url: &str, max_retries: u32) -> Result<String, St
     let client: reqwest::Client = reqwest::Client::builder()
         .timeout(Duration::from_secs(10)) // 设置超时时间为10秒
         .build()
-        .map_err(|e| e.to_string())?;
+        .map_err(|e: reqwest::Error| e.to_string())?;
 
     let mut retries: u32 = 0;
 
     loop {
         let response: reqwest::Response =
-            client.get(url).send().await.map_err(|e| e.to_string())?; // 发送GET请求并将请求的错误转换为String
+            client.get(url).send().await.map_err(|e: reqwest::Error| e.to_string())?; // 发送GET请求并将请求的错误转换为String
 
         // 检查请求的状态码
         if response.status().is_success() {
-            let body: String = response.text().await.map_err(|e| e.to_string())?; // 获取响应的文本内容
+            let body: String = response.text().await.map_err(|e: reqwest::Error| e.to_string())?; // 获取响应的文本内容
             return Ok(body);
         }
 

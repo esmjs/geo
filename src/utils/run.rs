@@ -16,17 +16,17 @@ pub async fn start() -> Result<(), Box<dyn std::error::Error>> {
     match get_province(province).await {
         Ok(_data) => {
             for _obj in _data {
-                let base_url = "https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=";
+                let base_url: &str = "https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=";
                 // taiwan的请求参数?code=710000无_full，别的省都带_full
-                let full = if _obj.adcode == 710000 { "" } else { "_full" };
+                let full: &str = if _obj.adcode == 710000 { "" } else { "_full" };
                 let url: String = format!("{}{}{}", base_url, _obj.adcode, full);
 
-                let abs_path = PathAbs::new("json")?;
+                let abs_path: PathAbs = PathAbs::new("json")?;
                 create_folder_if_not_exists(abs_path.clone())?;
                 let filename: String = format!("{}/{}.json", abs_path.display(), _obj.filename);
                 let relative_filename: String = format!("json/{}.json", _obj.filename);
 
-                let body = send_http_request(url.as_str(), max_retries).await;
+                let body: Result<String, String> = send_http_request(url.as_str(), max_retries).await;
                 let previous_content: Option<String> = read_previous_json_file(&filename)?;
 
                 match body {
