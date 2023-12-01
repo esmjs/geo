@@ -1,3 +1,5 @@
+use path_abs::{PathAbs, PathInfo};
+
 use super::{
     create_folder_if_not_exists, get_province, is_json_content_same, print_err, print_filename,
     print_link, print_out, print_write_filename, read_previous_json_file, send_http_request,
@@ -17,9 +19,11 @@ pub async fn start() -> Result<(), Box<dyn std::error::Error>> {
                 // taiwan的请求参数?code=710000无_full，别的省都带_full
                 let full = if _obj.adcode == 710000 { "" } else { "_full" };
                 let url: String = format!("{}{}{}", base_url, _obj.adcode, full);
-                // println!("URL：{}", url);
-                create_folder_if_not_exists("json")?;
-                let filename: String = format!("json/{}.json", _obj.filename);
+
+                let abs_path = PathAbs::new("json")?;
+                create_folder_if_not_exists(abs_path.clone())?;
+                let filename: String = format!("{}/{}.json", abs_path.display(), _obj.filename);
+                let relative_filename: String = format!("json/{}.json", _obj.filename);
 
                 let body = send_http_request(url.as_str(), max_retries).await;
                 let previous_content: Option<String> = read_previous_json_file(&filename)?;
@@ -28,14 +32,14 @@ pub async fn start() -> Result<(), Box<dyn std::error::Error>> {
                     Ok(body) => {
                         if let Some(previous) = previous_content {
                             if is_json_content_same(&previous, &body) {
-                                println!("{}", print_filename(&filename));
+                                println!("{}", print_filename(&relative_filename));
                             } else {
                                 write_to_json_file(&filename, &body, pretty_print)?;
-                                println!("{}", print_write_filename(&filename));
+                                println!("{}", print_write_filename(&relative_filename));
                             }
                         } else {
                             write_to_json_file(&filename, &body, pretty_print)?;
-                            println!("{}", print_write_filename(&filename));
+                            println!("{}", print_write_filename(&relative_filename));
                         }
                     }
                     Err(err) => {
