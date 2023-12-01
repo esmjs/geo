@@ -36,19 +36,20 @@ yarn add @esmjs/geo
 pnpm add @esmjs/geo
 ```
 
-## 🇨🇳 用法
+## 📕 用法
 
 ```ts
-// 如搭配 ECharts 地图组件
-import { geoChina } from "@esmjs/geo";
+// 如搭配 ECharts 地图组件，@esmjs/geo 还支持中国全省数据，请看下面的速查表
+// import { china as geoChina } from "@esmjs/geo"; // 如有命名冲突使用 as 别名即可
+import { china } from "@esmjs/geo";
 import * as echarts from "echarts/core";
 
 /**
  * 由于 echarts 没有导出 geoJSON 的 GeoJSONSourceInput 类型
- * geoChina 只能导出标准的 GeoJSON 格式类型
+ * china 只能导出标准的 GeoJSON 格式类型
  * 如果你的项目是 TypeScript 编写，下面代码加上 //@ts-expect-error 即可
  */
-echarts.registerMap("china", { geoJSON: geoChina });
+echarts.registerMap("china", { geoJSON: china });
 ```
 
 ## 🌍 使用场景
@@ -57,16 +58,34 @@ echarts.registerMap("china", { geoJSON: geoChina });
 
 <img src="https://xiaoxian521.github.io/hyperlink/img/echarts-geo.jpg" alt="echarts-geo" width="340" />
 
+## 🇨🇳 速查表
+
+一个中国，`34`个省级行政区，`23`个省、`5`个自治区、`4`个直辖市、`2`个特别行政区
+
+|   中国   |  **陕西**  |   山西    |   辽宁    |   吉林   |    黑龙江    |
+| :------: | :--------: | :-------: | :-------: | :------: | :----------: |
+|  china   |  shaanxi   |  shanxi   | liaoning  |  jilin   | heilongjiang |
+| **江苏** |  **浙江**  | **安徽**  | **福建**  | **江西** |   **山东**   |
+| jiangsu  |  zhejiang  |   anhui   |  fujian   | jiangxi  |   shandong   |
+| **河南** |  **湖北**  | **湖南**  | **广东**  | **海南** |   **四川**   |
+|  henan   |   hubei    |   hunan   | guangdong |  hainan  |   sichuan    |
+| **贵州** |  **云南**  | **河北**  | **甘肃**  | **青海** |   **台湾**   |
+| guizhou  |   yunnan   |   hebei   |   gansu   | qinghai  |    taiwan    |
+| **广西** | **内蒙古** | **西藏**  | **宁夏**  | **新疆** |   **北京**   |
+| guangxi  | neimenggu  |  xizang   |  ningxia  | xinjiang |   beijing    |
+| **天津** |  **上海**  | **重庆**  | **香港**  | **澳门** |              |
+| tianjin  |  shanghai  | chongqing | hongkong  |  aomen   |              |
+
 ## 🤔 FAQ
 
-- [为什么使用`rust`编写爬虫程序？](https://github.com/esmjs/geo/issues/1#issue-2015833595)
-- [为什么使用`esbuild`打包而不是`rollup`？](https://github.com/esmjs/geo/issues/1#issuecomment-1831371327)
-- [既然是纯`esm`包，为什么`package.json`文件还要加`main`、`module`、`types`配置呢？](https://github.com/esmjs/geo/issues/1#issuecomment-1831373645)
-- [如何运行`rust`爬虫程序？](https://github.com/esmjs/geo/issues/1#issuecomment-1831374543)
+- [为什么使用`rust`编写爬虫程序](https://github.com/esmjs/geo/issues/1#issue-2015833595)
+- [为什么使用`esbuild`打包而不是`rollup`](https://github.com/esmjs/geo/issues/1#issuecomment-1831371327)
+- [既然是纯`esm`包，为什么`package.json`文件还要加`main`、`module`、`types`配置呢](https://github.com/esmjs/geo/issues/1#issuecomment-1831373645)
+- [如何运行`rust`爬虫程序](https://github.com/esmjs/geo/issues/1#issuecomment-1831374543)
 - [`rust`相关学习资料](https://github.com/esmjs/geo/issues/1#issuecomment-1831374680)
 - [有么有类似`npmjs`的`rust`包管理器](https://github.com/esmjs/geo/issues/1#issuecomment-1831382508)
 - [`rust`安装环境麻烦，如何通过`docker`运行`rust`爬虫程序](https://github.com/esmjs/geo/issues/1#issuecomment-1831445627)
-- [地图数据来源哪？](https://github.com/esmjs/geo/issues/1#issuecomment-1831535156)
+- [地图数据来源哪](https://github.com/esmjs/geo/issues/1#issuecomment-1831535156)
 
 ## 许可证
 
