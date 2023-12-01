@@ -27,11 +27,16 @@ pub fn print_out(url: &str) -> AnsiGenericString<'_, str> {
 }
 
 pub fn print_filename(filename: &str) -> AnsiGenericString<'_, str> {
-    let _text: String = format!("{} 无变化，跳过写入", filename);
+    let _text: String = format!("{} 无变化，无需更新", filename);
     return White.paint(_text);
 }
 
 pub fn print_write_filename(filename: &str) -> AnsiGenericString<'_, str> {
     let _text: String = format!("{} 写入成功", filename);
+    return Green.paint(_text);
+}
+
+pub fn print_update_filename(filename: &str) -> AnsiGenericString<'_, str> {
+    let _text: String = format!("{} 有变化，已经更新", filename);
     return Green.paint(_text);
 }

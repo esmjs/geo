@@ -3,8 +3,8 @@ use std::process;
 
 use super::{
     create_folder_if_not_exists, get_province, is_json_content_same, print_err, print_filename,
-    print_link, print_out, print_write_filename, read_previous_json_file, send_http_request,
-    write_to_json_file,
+    print_link, print_out, print_update_filename, print_write_filename, read_previous_json_file,
+    send_http_request, write_to_json_file,
 };
 
 #[tokio::main]
@@ -26,7 +26,8 @@ pub async fn start() -> Result<(), Box<dyn std::error::Error>> {
                 let filename: String = format!("{}/{}.json", abs_path.display(), _obj.filename);
                 let relative_filename: String = format!("json/{}.json", _obj.filename);
 
-                let body: Result<String, String> = send_http_request(url.as_str(), max_retries).await;
+                let body: Result<String, String> =
+                    send_http_request(url.as_str(), max_retries).await;
                 let previous_content: Option<String> = read_previous_json_file(&filename)?;
 
                 match body {
@@ -36,7 +37,7 @@ pub async fn start() -> Result<(), Box<dyn std::error::Error>> {
                                 println!("{}", print_filename(&relative_filename));
                             } else {
                                 write_to_json_file(&filename, &body, pretty_print)?;
-                                println!("{}", print_write_filename(&relative_filename));
+                                println!("{}", print_update_filename(&relative_filename));
                             }
                         } else {
                             write_to_json_file(&filename, &body, pretty_print)?;
